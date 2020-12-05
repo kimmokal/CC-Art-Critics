@@ -1,0 +1,6 @@
+image_data/abstract/*
+image_data/realistic/*
+trained_models/*
+!trained_models/README.md
+
+.ipynb_checkpoints
