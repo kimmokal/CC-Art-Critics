@@ -4,3 +4,4 @@ trained_models/*
 !trained_models/README.md
 
 .ipynb_checkpoints
+__pycache__
