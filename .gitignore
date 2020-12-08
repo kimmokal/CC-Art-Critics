@@ -1,5 +1,6 @@
 image_data/abstract/*
 image_data/realistic/*
+image_data/with_feedback/*
 trained_models/*
 !trained_models/README.md
 

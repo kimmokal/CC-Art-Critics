@@ -3,8 +3,11 @@ import numpy as np
 
 
 class AbstractImageDiscriminator(torch.nn.Module):
-    def __init__(self):
+    def __init__(self, maxValue=1):
         super(AbstractImageDiscriminator, self).__init__()
+
+        self.maxValue = maxValue
+
         self.conv1 = torch.nn.Conv2d(3, 64, 11, stride=5, dilation=1)
         self.conv2 = torch.nn.Conv2d(64, 128, 7, stride=3, dilation=1)
         self.conv3 = torch.nn.Conv2d(128, 256, 5, stride=1, dilation=1)
@@ -20,7 +23,7 @@ class AbstractImageDiscriminator(torch.nn.Module):
         x = torch.nn.functional.relu(x)
         x = torch.flatten(x, 1)
         x = self.fc(x)
-        x = torch.sigmoid(x)
+        x = self.maxValue*torch.sigmoid(x)
         return x
 
     def getNumberOfParameters(self):
