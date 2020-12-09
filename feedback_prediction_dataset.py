@@ -5,10 +5,10 @@ import torchvision
 import pandas as pd
 
 
-class DiscriminatorDataset(torch.utils.data.Dataset):
+class FeedbackDataset(torch.utils.data.Dataset):
 
     def __init__(self):
-        super(DiscriminatorDataset, self).__init__()
+        super(FeedbackDataset, self).__init__()
         currentDir = path.dirname(__file__)
         imageDir = path.join(currentDir, 'image_data/with_feedback')
         self.imageFiles = [path.join(imageDir, f) for f in listdir(
@@ -26,4 +26,4 @@ class DiscriminatorDataset(torch.utils.data.Dataset):
         filename = self.imageFiles[index]
 
         pilImage = Image.open(filename).convert("RGB")
-        return (torchvision.transforms.ToTensor()(pilImage), self.ratings[self.ratings["image"] == imageName]["rating"])
+        return (torchvision.transforms.ToTensor()(pilImage), self.ratings[self.ratings["image"] == imageName]["rating"].values[0])

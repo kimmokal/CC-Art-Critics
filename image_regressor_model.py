@@ -2,9 +2,9 @@ import torch
 import numpy as np
 
 
-class AbstractImageDiscriminator(torch.nn.Module):
+class ImageRegressor(torch.nn.Module):
     def __init__(self, maxValue=1):
-        super(AbstractImageDiscriminator, self).__init__()
+        super(ImageRegressor, self).__init__()
 
         self.maxValue = maxValue
 
