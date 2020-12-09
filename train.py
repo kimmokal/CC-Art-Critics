@@ -9,7 +9,7 @@ def collate(data):
     return images, labels
 
 
-def train(model, optimizer, lossFunction, dataset, device, epochs=50, batchSize=8):
+def train(model, optimizer, lossFunction, dataset, device, epochs=50, batchSize=8, countAccuracy=True):
 
     dataloader = torch.utils.data.DataLoader(
         dataset=dataset,
@@ -39,16 +39,18 @@ def train(model, optimizer, lossFunction, dataset, device, epochs=50, batchSize=
             numberOfPredictions += len(images)
 
             optimizer.zero_grad()
+            torch.cuda.empty_cache()
 
             prediction = model(images)
 
             loss = lossFunction(prediction, labels)
             loss.backward()
 
-            prediction = prediction >= 0.5
-            prediction = prediction.float()
+            if countAccuracy:
+                prediction = prediction >= 0.5
+                prediction = prediction.float()
+                correctAnswers += torch.sum(prediction == labels).item()
 
-            correctAnswers += torch.sum(prediction == labels).item()
             runningLoss += loss.item()
 
             optimizer.step()
