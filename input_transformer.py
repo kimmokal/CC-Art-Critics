@@ -8,8 +8,8 @@ class InputTransformer(torch.nn.Module):
         self.variances = torch.nn.Parameter(torch.randn(1, 500))
         self.means = torch.nn.Parameter(torch.randn(1, 500))
 
-        self.noiseFc = torch.nn.Linear(500, 128)
-        self.classFc = torch.nn.Linear(500, 1000)
+        self.noiseFc = torch.nn.Linear(500, 128, bias=False)
+        self.classFc = torch.nn.Linear(500, 1000, bias=False)
 
     def forward(self, x):
         x = (torch.exp(self.variances)+1)*x + self.means
