@@ -64,17 +64,17 @@ The training of the different modules are in separate Jupyter Notebooks. Launch 
 jupyter notebook
 ```
 
-To train the abstract art discriminator, run `abstract_image_discriminator_training.ipynb`. It gives a score from 0 to 1 based on the abstractness of the image.
+To train the abstract art discriminator, run `abstract_image_discriminator_training.ipynb`. It gives a score from 0 to 1 based on the abstractness of the image.<br/>
 The architecture of the network is defined in `image_regressor_model.py`.
 
 ### Step 5 - Train the feedback predictor
 
-To train the feedback predictor, run `feeback_predictor_training.ipynb`.
-The architecture of the feedback predictor is the same as the abstract art discriminator, with the difference that the sigmoid output is multiplied by 6 extending it's output range to [0,6]. Hence it is possible for the system to produce images for which the feedback predictor gives higher rating than any image in the training set.
+To train the feedback predictor, run `feeback_predictor_training.ipynb`.<br/>
+The architecture of the feedback predictor is the same as the abstract art discriminator, with the difference that the sigmoid output is multiplied by 6 extending it's output range to [0,6]. Hence it is possible for the system to produce images for which the feedback predictor gives higher rating than any image in the training set was originally given.
 
 ### Step 6 - Train the input transformer
 
-To train the input transformer, run `input_transformer_training.ipynb`.
+To train the input transformer, run `input_transformer_training.ipynb`.<br/>
 Its architecture is defined in `input_transformer.py`.
 
 ### Step 7 - Generate images
