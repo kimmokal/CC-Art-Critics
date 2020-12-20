@@ -1,3 +1,3 @@
-# Trained models folder
+# Trained models directory
 
-This folder contains all trained models. The files in this folder are gitignored.
+This directory contains all the trained models. Some pretrained models can be found in `pretrained_examples`. The files in this folder are ignored by git.
