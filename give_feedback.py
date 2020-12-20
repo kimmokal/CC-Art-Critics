@@ -5,7 +5,7 @@ import glob
 import os
 
 # Path to images
-img_dir = 'image_data\\abstract\\'
+img_dir = 'image_data/abstract/'
 img_paths = glob.glob(img_dir+'*')
 
 # Create a new dataframe for the ratings or read it from a file if it already exists
