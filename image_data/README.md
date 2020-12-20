@@ -1,3 +1,3 @@
-# Data folder
+# Data directory
 
-keep abstract images in a subfolder called `abstract` and realistic images in a subfolder called `realistic`. The contets of these folders are gitignored. All images should be of size 512 x 512. 
+Keep abstract images in a subdirectory called `abstract` and realistic images in a subdirectory called `realistic`. The generated images are saved to a subdirectory called `realistic`. The contets of these folders are ignored by git. All images should be of size 512 x 512. 
