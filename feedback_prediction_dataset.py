@@ -10,7 +10,7 @@ class FeedbackDataset(torch.utils.data.Dataset):
     def __init__(self):
         super(FeedbackDataset, self).__init__()
         currentDir = path.dirname(__file__)
-        imageDir = path.join(currentDir, 'image_data/with_feedback')
+        imageDir = path.join(currentDir, 'image_data/abstract')
         self.imageFiles = [path.join(imageDir, f) for f in listdir(
             imageDir) if path.isfile(path.join(imageDir, f))]
         self.imageNames = [f for f in listdir(
