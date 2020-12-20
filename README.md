@@ -15,7 +15,7 @@ The input space of the BigGAN is explored with the help of the input transformer
 
 ## Shortcut: Quick image generation
 
-There are pre-trained models available ... 
+It is possible to skip the full training procedure and to just quickly demo the system and generate images with pre-trained models. To do this, first initialize the project as described in Step 1 below, then launch a Jupyter Notebook server with the command `jupyter notebook`, and finally execute the `art_generator_example.ipynb` notebook.
 
 ## Full procedure:
 
@@ -42,7 +42,7 @@ unzip art-critics-dataset.zip
 
 The .zip file contains 3566 images in 512x512 resolution. Half of the images belong to the "abstract" category and the other half to "realistic". The abstract images were downloaded from [Unsplash](https://unsplash.com/), while the realistic images were randomly sampled from the [ImageNet](http://www.image-net.org/) data set.
 
-**Note:** This download link will be removed by 02/2021.
+**Note:** This Dropbox download link will be removed by 02/2021.
 
 ### Step 3 - Give ratings to the abstract images
 
@@ -54,7 +54,7 @@ python give_feedback.py
 
 The script asks for integer values between 0 and 5, and giving any other value as an input exits the script. It will write the ratings to a file, which is by default named `art_ratings.csv`. The script will check which images have been rated and won't show them again, so it is possible to interrupt and continue the process.
 
-**Note:** Giving ratings to all 1783 "abstract" category images is very time consuming, and hence an example file `art_ratings_example.csv` is provided with all the images already rated.
+**Note:** Giving ratings to all 1783 "abstract" category images is very time consuming, and hence an example file `art_ratings_example.csv` is provided with all the images already rated. Rename the file as `art_ratings.csv` and you can move on to the next step.
 
 ### Step 4 - Train the abstract art discriminator
 
@@ -64,8 +64,8 @@ The training of the different modules are in separate Jupyter Notebooks. Launch 
 jupyter notebook
 ```
 
-To train the abstract art discriminator, run `abstract_image_discriminator_training.ipynb`. It gives a score from 0 to 1 based on the abstractness of the image.<br/>
-The architecture of the network is defined in `image_regressor_model.py`.
+To train the abstract art discriminator, run `abstract_image_discriminator_training.ipynb`.<br/>
+It gives a score from 0 to 1 based on the abstractness of the image. It is possible to train the networks with a CPU, but it can be painfully slow. Training the networks with a GPU is highly recommended. The architecture of the network is defined in `image_regressor_model.py`.
 
 ### Step 5 - Train the feedback predictor
 
@@ -75,7 +75,7 @@ The architecture of the feedback predictor is the same as the abstract art discr
 ### Step 6 - Train the input transformer
 
 To train the input transformer, run `input_transformer_training.ipynb`.<br/>
-Its architecture is defined in `input_transformer.py`.
+The input transformer takes in a noise vector and transforms it to a suitable input for the BigGAN. The goal of the input transformer is to find areas in the BigGAN's input parameter space in which the generated images have maximal values for both abstractness and predicted feedback. Its architecture is defined in `input_transformer.py`.
 
 ### Step 7 - Generate images
 
